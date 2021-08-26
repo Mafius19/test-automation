@@ -60,4 +60,27 @@ public class Ejercicios {
 
         driver.close();
     }
+
+    /*Ejercicio 4
+    Crear un método llamado bbcMundoLinks
+    Ingresar al sitio https://www.bbc.com/mundo
+    Mostrar el texto de todos los links*/
+    @Test
+    public void bbcMundoLink() {
+        String URL_BBC = "https://www.bbc.com/mundo";
+        System.setProperty("webdriver.chrome.driver","drivers/chromedriver.exe");
+        WebDriver driver = new ChromeDriver();
+        driver.get(URL_BBC);
+
+        List<WebElement> listaLinks = driver.findElements(By.tagName("a"));
+        System.out.println("La cantidad de links del sitio son: " + listaLinks.size());
+        System.out.println("************ Links ************");
+        for (WebElement link:listaLinks) {
+            if (!link.getText().isEmpty()) {
+                System.out.println(link.getText());
+            }
+        }
+        System.out.println("*******************************");
+        driver.close();
+    }
 }
