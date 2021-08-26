@@ -83,4 +83,27 @@ public class Ejercicios {
         System.out.println("*******************************");
         driver.close();
     }
+
+    /*Ejercicio 5
+    Crear un método llamado bbcMundoListas
+    Ingresar al sitio https://www.bbc.com/mundo
+    Mostrar todos los elementos li y su texto*/
+    @Test
+    public void bbcMundoListas() {
+        String URL_BBC = "https://www.bbc.com/mundo";
+        System.setProperty("webdriver.chrome.driver","drivers/chromedriver.exe");
+        WebDriver driver = new ChromeDriver();
+        driver.get(URL_BBC);
+
+        List<WebElement> listaLi = driver.findElements(By.tagName("li"));
+        System.out.println("La cantidad de links del sitio son: " + listaLi.size());
+        System.out.println("************ Elementos li ************");
+        for (WebElement li:listaLi) {
+            if (!li.getText().isEmpty()) {
+                System.out.println(li.getText());
+            }
+        }
+        System.out.println("**************************************");
+        driver.close();
+    }
 }
