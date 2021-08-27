@@ -251,6 +251,7 @@ public class Ejercicios {
             System.out.println(boton.getText());
         }
         System.out.println("==================================");
+        driver.quit();
     }
 
     /*Ejercicio 13
@@ -273,6 +274,7 @@ public class Ejercicios {
         username.sendKeys("test@test.com");
         password.sendKeys("holamundo");
         loginBtn.click();
+        driver.quit();
     }
 
 }
