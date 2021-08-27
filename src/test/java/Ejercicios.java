@@ -219,4 +219,60 @@ public class Ejercicios {
         driver.navigate().forward();
     }
 
+    /*Ejercicio 12
+    Crear un método llamado facebookPageTest
+    Abrir un navegador con facebook: https://www.facebook.com/
+    Mostrar la cantidad de div que existen (utilizando tagname)
+    Mostrar el texto de todos los tipos a (hipervínculos)
+    Mostrar la cantidad de botones que tiene la página
+    Mostrar los textos de los botones que se encuentran en la página*/
+    @Test
+    public void facebookPageTest() {
+        String URL_Facebook = "https://www.facebook.com";
+        System.setProperty("webdriver.chrome.driver","drivers/chromedriver.exe");
+        WebDriver driver = new ChromeDriver();
+        driver.get(URL_Facebook);
+
+        List<WebElement> listaDivs = driver.findElements(By.tagName("div"));
+        System.out.println("La cantidad de divs que hay son: " + listaDivs.size());
+
+        List<WebElement> listaLinks = driver.findElements(By.tagName("a"));
+        System.out.println("========Textos en hipervínculos========");
+        for (WebElement link:listaLinks) {
+            System.out.println(link.getText());
+        }
+        System.out.println("======================================");
+
+        List<WebElement> listaBotones = driver.findElements(By.tagName("button"));
+        System.out.println("La cantidad de buttons que hay son: " + listaBotones.size());
+
+        System.out.println("========Textos en botones========");
+        for (WebElement boton:listaBotones) {
+            System.out.println(boton.getText());
+        }
+        System.out.println("==================================");
+    }
+
+    /*Ejercicio 13
+    Crear un método de test llamado sendKeysToFacebook
+    Ir a Facebook https://www.facebook.com/
+    Completar el email y contraseña con los datos: test@test.com y holamundo
+    respectivamente
+    Hacer click en login*/
+    @Test
+    public void sendKeysToFacebook() {
+        String URL_Facebook = "https://www.facebook.com";
+        System.setProperty("webdriver.chrome.driver","drivers/chromedriver.exe");
+        WebDriver driver = new ChromeDriver();
+        driver.get(URL_Facebook);
+
+        WebElement username = driver.findElement(By.id("email"));
+        WebElement password = driver.findElement(By.id("pass"));
+        WebElement loginBtn = driver.findElement(By.name("login"));
+
+        username.sendKeys("test@test.com");
+        password.sendKeys("holamundo");
+        loginBtn.click();
+    }
+
 }
