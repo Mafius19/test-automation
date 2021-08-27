@@ -165,7 +165,19 @@ public class Ejercicios {
         System.setProperty("webdriver.chrome.driver","drivers/chromedriver.exe");
         WebDriver driver = new ChromeDriver();
         driver.get(URL_Google);
-        System.out.println(driver);
         return driver;
     }
+
+    /*Ejercicio 9
+    Crear un método llamado getDriver que inicialice un sitio web que recibe por parámetro.
+    Debe retornar un objeto de tipo Webdriver*/
+    @Test
+    public WebDriver getDriver() {
+        String URL_Github = "https://www.github.com";
+        System.setProperty("webdriver.chrome.driver","drivers/chromedriver.exe");
+        WebDriver driver = new ChromeDriver();
+        driver.get(URL_Github);
+        return driver;
+    }
+
 }
