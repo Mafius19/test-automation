@@ -1,4 +1,5 @@
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -105,5 +106,66 @@ public class Ejercicios {
         }
         System.out.println("**************************************");
         driver.close();
+    }
+    /*Ejercicio 6
+    Crear un método llamado spotifyTitleTest
+    Debe inicializar https://www.spotify.com
+    Validar que el título del sitio sea Escuchar es todo - Spotify.
+    Si lo es, debe indicar “Test Passed!!” sino, debe mostrar “Test failed"*/
+    @Test
+    public void spotifyTitleTest() {
+        String URL_Spotify = "https://www.spotify.com";
+        System.setProperty("webdriver.chrome.driver","drivers/chromedriver.exe");
+        WebDriver driver = new ChromeDriver();
+        driver.get(URL_Spotify);
+        String titulo =driver.getTitle();
+        System.out.println("Título de la pagina: " + titulo);
+        if (titulo.equals("Escuchar es todo - Spotify")){
+            System.out.println("Test Passed!!");
+        } else {
+            System.out.println("Test Failed");
+        }
+    }
+
+    /*Ejercicio 7
+    Crear un método llamado getWindowsSizeTest
+    Abrir el explorador con google.com
+    Obtener y mostrar el ancho y alto de la página
+    Setear un nuevo tamaño de pantalla 1024x768*/
+    @Test
+    public void getWindowSizeTest() {
+        String URL_Google = "https://www.google.com";
+        System.setProperty("webdriver.chrome.driver","drivers/chromedriver.exe");
+        WebDriver driver = new ChromeDriver();
+        driver.get(URL_Google);
+
+        int height = driver.manage().window().getSize().getHeight();
+        int width = driver.manage().window().getSize().getWidth();
+
+        System.out.println("El largo actual es: " + height );
+        System.out.println("El ancho actual es: " + width);
+
+        Dimension dimension = new Dimension(1024,768);
+        driver.manage().window().setSize(dimension);
+        System.out.println("Actualizando el ancho y el largo...");
+
+        height = driver.manage().window().getSize().getHeight();
+        width = driver.manage().window().getSize().getWidth();
+
+        System.out.println("El largo actual es: " + height);
+        System.out.println("El ancho actual es: " + width);
+    }
+
+    /*Ejercicio 8
+    Crear un método llamado getGoogleDriver que inicialice un sitio web www.google.com.
+    Debe retornar un objeto de tipo Webdriver*/
+    @Test
+    public WebDriver getGoogleDriver() {
+        String URL_Google = "https://www.google.com";
+        System.setProperty("webdriver.chrome.driver","drivers/chromedriver.exe");
+        WebDriver driver = new ChromeDriver();
+        driver.get(URL_Google);
+        System.out.println(driver);
+        return driver;
     }
 }
