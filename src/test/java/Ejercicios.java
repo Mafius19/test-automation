@@ -1,7 +1,4 @@
-import org.openqa.selenium.By;
-import org.openqa.selenium.Dimension;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
 
@@ -178,6 +175,48 @@ public class Ejercicios {
         WebDriver driver = new ChromeDriver();
         driver.get(URL_Github);
         return driver;
+    }
+
+    /*Ejercicio 10
+    Crear un método llamado searchInGoogle
+    Acceder a google.com
+    Ingresar en el buscador, la palabra “WebElement” y presionar enter.*/
+    @Test
+    public void searchInGoogle() {
+        String URL_Google = "https://www.google.com";
+        System.setProperty("webdriver.chrome.driver","drivers/chromedriver.exe");
+        WebDriver driver = new ChromeDriver();
+        driver.get(URL_Google);
+
+        WebElement searcher = driver.findElement(By.name("q"));
+
+        searcher.sendKeys("WebElement" + Keys.RETURN);
+        //Otra solucion posible:
+        //WebElement searchInput = driver.findElement(By.name("btnK"));
+        //searcher.sendKeys("WebElement");
+        //searchInput.submit();
+    }
+
+    /*Ejercicio 11
+    Crear un método llamado searchInGoogleAndGoBack
+    Acceder a google.com
+    Imprimir el título del sitio
+    Buscar: WebElement y presionar ENTER
+    Volver atras
+    Refrescar la página
+    Ir hacia adelante*/
+    @Test
+    public void searchInGoogleAndGoBack() {
+        String URL_Google = "https://www.google.com";
+        System.setProperty("webdriver.chrome.driver","drivers/chromedriver.exe");
+        WebDriver driver = new ChromeDriver();
+        driver.get(URL_Google);
+
+        WebElement searcher = driver.findElement(By.name("q"));
+        searcher.sendKeys("WebElement" + Keys.RETURN);
+        driver.navigate().back();
+        driver.navigate().refresh();
+        driver.navigate().forward();
     }
 
 }
