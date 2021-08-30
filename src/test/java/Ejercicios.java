@@ -276,5 +276,58 @@ public class Ejercicios {
         loginBtn.click();
         driver.quit();
     }
+    /*Ejercicio 14
+    Subir este ejercicio en a github en una rama nueva llamada selenium/ejercicio1.
+    Crear una pull request y agregar a jcblimop como revisor.
+    Crear un método con un nombre a seleccionar
+    Acceder a Netflix: https://www.netflix.com/ar/
+    Mostrar los elementos h1 y h2 que hay en el sitio
+    Refrescar la página
+    Mostrar el texto de los botones que se encuentran en la página
+    Mostrar la cantidad de elementos div que contiene el sitio
+    Obtener y mostrar el título de la página
+    Mostrar la cantidad de elementos de tipos link*/
+    @Test
+    public void NetflixTest() {
+        String URL_Netflix = "https://www.netflix.com/ar/";
+        System.setProperty("webdriver.chrome.driver","drivers/chromedriver.exe");
+        WebDriver driver = new ChromeDriver();
+        driver.get(URL_Netflix);
+
+        List<WebElement> listaH1 = driver.findElements(By.tagName("h1"));
+        List<WebElement> listaH2 = driver.findElements(By.tagName("h2"));
+        System.out.println("========Textos en H1========");
+        for (WebElement h1:listaH1) {
+            System.out.println(h1.getText());
+        }
+        System.out.println("========================================");
+
+        System.out.println("==============Textos en H2==============");
+        for (WebElement h2:listaH2) {
+            System.out.println(h2.getText());
+        }
+        System.out.println("========================================");
+
+        driver.navigate().refresh();
+
+        List<WebElement> listaBotones = driver.findElements(By.tagName("button"));
+
+        System.out.println("============Textos en botones===========");
+        for (WebElement boton:listaBotones) {
+            System.out.println(boton.getText());
+        }
+        System.out.println("========================================");
+
+        List<WebElement> listaDivs = driver.findElements(By.tagName("div"));
+        System.out.println("La cantidad de divs que hay son: " + listaDivs.size());
+
+        String titulo = driver.getTitle();
+        System.out.println("El titulo de la pagina es: " + titulo);
+
+        List<WebElement> listaLinks = driver.findElements(By.tagName("a"));
+        System.out.println("La cantidad de hipervínculos <a> que hay son: " + listaLinks.size());
+
+        driver.quit();
+    }
 
 }
