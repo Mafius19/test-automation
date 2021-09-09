@@ -4,7 +4,7 @@ import org.testng.annotations.Test;
 
 import java.util.List;
 
-public class Ejercicios {
+public class Practico_8 {
     /*Ejercicio 1
     Crear un método que abra el browser y muestre el explorador de google con Chrome*/
     @Test
